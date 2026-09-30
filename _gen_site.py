@@ -155,9 +155,9 @@ def build_index():
     hero = f'''<section class="hero" data-hero-slideshow>
 <div class="hero__slides">
 <div class="hero__slide is-active"><img src="{IMG}treatment-room-1.jpg" alt="Treatment room at Mahajan Dental Care"></div>
-<div class="hero__slide"><img src="{IMG}reception-bench.jpg" alt="Reception at Mahajan Dental Care"></div>
-<div class="hero__slide"><img src="{IMG}treatment-room-2.jpg" alt="Treatment room at Mahajan Dental Care"></div>
-<div class="hero__slide"><img src="{IMG}entrance-signage.jpg" alt="Mahajan Dental Care clinic entrance"></div>
+<div class="hero__slide"><img src="{IMG}waiting-area.jpg" alt="Waiting area at Mahajan Dental Care"></div>
+<div class="hero__slide"><img src="{IMG}treatment-room-3.jpg" alt="Treatment room at Mahajan Dental Care"></div>
+<div class="hero__slide"><img src="{IMG}opg-xray-room.jpg" alt="OPG X-ray room at Mahajan Dental Care"></div>
 </div>
 <div class="hero__scrim"></div>
 <div class="wrap hero__inner">
@@ -217,7 +217,7 @@ def build_index():
 <a class="text-link text-link--light" href="doctors.html">Meet the doctors{I_ARROW}</a>
 </div>
 <div class="team-grid stagger on-dark" data-reveal>
-<article class="person"><span class="person__photo"><span class="person__ph">{I_LEAF}<span>Add doctor photo</span></span></span><div class="person__body"><h3 class="person__name">Dr. Tarun Mahajan</h3><p class="person__role">Founder &middot; Endodontist, Oral Surgeon &amp; Implantologist</p><p class="person__qual" style="color:var(--cream-70)">B.D.S. (Pb.), D.Endo, MISOI &middot; Fellow, International College of Dentists (USA)</p></div></article>
+<article class="person"><span class="person__photo"><img src="{IMG}doctor-tarun-portrait.jpg" alt="Dr. Tarun Mahajan"></span><div class="person__body"><h3 class="person__name">Dr. Tarun Mahajan</h3><p class="person__role">Founder &middot; Endodontist, Oral Surgeon &amp; Implantologist</p><p class="person__qual" style="color:var(--cream-70)">B.D.S. (Pb.), D.Endo, MISOI &middot; Fellow, International College of Dentists (USA)</p></div></article>
 <article class="person"><span class="person__photo"><span class="person__ph">{I_LEAF}<span>Add doctor photo</span></span></span><div class="person__body"><h3 class="person__name">Dr. Siddhant Mahajan</h3><p class="person__role">Micro-Endodontics &amp; Smile Makeover Specialist</p><p class="person__qual" style="color:var(--cream-70)">BDS, MDS &middot; Single-Sitting RCT specialist</p></div></article>
 </div>
 </div></section>'''
@@ -235,12 +235,34 @@ def build_index():
 </div>
 </div></section>'''
 
+    clinic_teaser = f'''<section class="section bg-card"><div class="wrap">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:clamp(1.6rem,3vw,2.2rem)" data-reveal>
+<div><span class="eyebrow">Inside the clinic</span><h2 class="display-2">A clean, well-equipped space.</h2></div>
+<a class="text-link" href="clinic.html">Take a look inside{I_ARROW}</a>
+</div>
+<div class="gallery" data-reveal style="grid-auto-rows:100px">
+<figure class="frame g2"><img src="{IMG}entrance-signage.jpg" alt="Clinic entrance"></figure>
+<figure class="frame g3"><img src="{IMG}opg-room-door.jpg" alt="OPG X-ray room"></figure>
+<figure class="frame g3"><img src="{IMG}treatment-room-2.jpg" alt="Treatment room"></figure>
+</div>
+</div></section>'''
+
+    process = f'''<section class="section bg-band"><div class="wrap">
+{section_head("How it works", "A calm path from consultation to result.")}
+<div class="steps stagger" data-reveal>
+<div class="step"><span class="step__no">1</span><h3>Consultation</h3><p>We listen first — your concern shapes the treatment plan.</p></div>
+<div class="step"><span class="step__no">2</span><h3>Diagnosis</h3><p>Careful examination, with digital imaging where it helps.</p></div>
+<div class="step"><span class="step__no">3</span><h3>Treatment</h3><p>Precise, comfortable care from the specialist it needs.</p></div>
+<div class="step"><span class="step__no">4</span><h3>Follow-up</h3><p>Clear aftercare guidance, so results are built to last.</p></div>
+</div>
+</div></section>'''
+
     cta = f'''<section class="ctaband"><div class="wrap ctaband__row" data-reveal>
 <div><span class="eyebrow eyebrow--light">Book your visit</span><h2>Ready when you are.</h2><p>Message us on WhatsApp or call the clinic — new patients are always welcome.</p></div>
 <div class="ctaband__btns"><a class="btn btn--cream" href="{WA_BOOK}" target="_blank" rel="noopener">Book an Appointment</a><a class="text-link text-link--light" href="{WA_CHAT}" target="_blank" rel="noopener">Chat with us{I_ARROW}</a></div>
 </div></section>'''
 
-    body = hero + factstrip + intro + services_teaser + doctors_teaser + reviews + cta
+    body = hero + factstrip + intro + services_teaser + doctors_teaser + process + reviews + clinic_teaser + cta
     return page(
         "Trusted Dental Clinic in Old Faridabad Since 1986",
         "Mahajan Dental Care — one of Old Faridabad's oldest and most trusted dental clinics, serving families since 1986.",
@@ -341,20 +363,23 @@ def build_doctors():
          ["Fellow of the International College of Dentists (USA)",
           "Formerly House Surgeon at Government Dental College &amp; Hospital, Amritsar",
           "Regd. No. PDC 929/A",
-          "Leads an ISO 9001:2008 certified clinic specialising in implants and orthodontics"]),
+          "Leads an ISO 9001:2008 certified clinic specialising in implants and orthodontics"],
+         "doctor-tarun-portrait.jpg"),
         ("Dr. Siddhant Mahajan", "Micro-Endodontics &amp; Smile Makeover Specialist",
          "BDS, MDS",
          "Dr. Siddhant Mahajan combines 5 years of clinical experience with a gentle touch to redefine the dental experience. As a specialist in micro-endodontics and smile makeovers, he believes every tooth deserves the highest level of care — and specialises in single-sitting RCTs, so patients get back to their lives faster and pain-free.",
          ["Specialist in Micro-Endodontics",
           "Smile Makeover specialist",
           "Single-Sitting Root Canal Treatment (RCT)",
-          "Precise, microscopic-level treatment in a relaxed environment"]),
+          "Precise, microscopic-level treatment in a relaxed environment"],
+         None),
     ]
     cards = []
-    for name, role, qual, bio, creds in docs:
+    for name, role, qual, bio, creds, photo in docs:
         cred_html = "".join(f"<li>{c}</li>" for c in creds)
+        photo_html = f'<img src="{IMG}{photo}" alt="{name}">' if photo else f'<span class="person__ph">{I_LEAF}<span>Add doctor photo</span></span>'
         cards.append(f'''<article class="person" data-reveal>
-<span class="person__photo"><span class="person__ph">{I_LEAF}<span>Add doctor photo</span></span></span>
+<span class="person__photo">{photo_html}</span>
 <div class="person__body"><h3 class="person__name">{name}</h3><p class="person__role">{role}</p><p class="person__qual">{qual}</p><p class="person__bio">{bio}</p><ul class="person__cred">{cred_html}</ul></div>
 </article>''')
     grid = f'<section class="section bg-card"><div class="wrap"><div class="team-grid">{"".join(cards)}</div></div></section>'
@@ -383,15 +408,15 @@ def build_clinic():
 <div class="gallery" data-reveal>
 <figure class="frame g1"><img src="{IMG}entrance-signage.jpg" alt="Clinic entrance"><span class="frame__tag">Entrance</span></figure>
 <figure class="frame g2"><img src="{IMG}treatment-room-1.jpg" alt="Treatment room"><span class="frame__tag">Treatment room</span></figure>
-<figure class="frame g4"><img src="{IMG}reception-bench.jpg" alt="Reception"><span class="frame__tag">Reception</span></figure>
-<figure class="frame g4"><img src="{IMG}treatment-room-2.jpg" alt="Treatment room"><span class="frame__tag">Treatment room</span></figure>
+<figure class="frame g4"><img src="{IMG}waiting-area.jpg" alt="Waiting area"><span class="frame__tag">Waiting area</span></figure>
+<figure class="frame g4"><img src="{IMG}opg-xray-room.jpg" alt="OPG X-ray room"><span class="frame__tag">OPG X-ray room</span></figure>
 <figure class="frame g5"><img src="{IMG}treatment-room-3.jpg" alt="Treatment room"><span class="frame__tag">Treatment room</span></figure>
 </div>
 </div></section>'''
 
     access = f'''<section class="section bg-ink"><div class="wrap split">
 <div data-reveal><span class="eyebrow eyebrow--light">Getting here</span><h2 class="display-2" style="color:var(--cream)">Easy to find, easy to reach.</h2><p class="mut" style="margin-top:1.2rem">{ADDRESS}</p><a class="text-link text-link--light" style="margin-top:1.4rem" href="{MAPS}" target="_blank" rel="noopener">Open in Google Maps{I_ARROW}</a></div>
-<div class="split__media" data-reveal><figure class="frame frame--wide"><img src="{IMG}exterior-signage.jpg" alt="Mahajan Dental Care building"></figure></div>
+<div class="split__media" data-reveal><figure class="frame frame--wide"><img src="{IMG}exterior-building.jpg" alt="Mahajan Dental Care building, Old Faridabad"></figure></div>
 </div></section>'''
 
     body = hero + gallery + access
